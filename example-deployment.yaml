@@ -1,0 +1,32 @@
+# example-deployment.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deployment
+spec:
+  selector:
+    matchLabels:
+      app: httpbin
+  replicas: 5
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: httpbin
+    spec:
+      containers:
+      - name: httpbin
+        image: kennethreitz/httpbin:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: VERSION
+          value: "1.0.0"
+        resources:
+          requests:
+            memory: "256M"
