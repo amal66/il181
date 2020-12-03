@@ -1,4 +1,4 @@
-# il181
+# Kubernetes Tutorial
 Distributed Systems Assignment
 
 This repository contains the files needed to compelete the Kubernetes tutorial at https://medium.com/p/fc92df972148. 
